@@ -32,7 +32,7 @@ public class UDPServer {
 		close = true;
 		System.out.println("Server is ready\n");
 
-		pacSize = 1024;
+		pacSize = 65508;
 		pacData = new byte[pacSize];
 
 		// TO-DO: Receive the messages and process them by calling processMessage(...).

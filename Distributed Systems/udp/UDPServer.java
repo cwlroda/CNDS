@@ -28,6 +28,7 @@ public class UDPServer {
 		byte[]			pacData;
 		byte[]			buffer;
 		DatagramPacket 	pac;
+		int rec_msg = 0;
 
 		close = true;
 		System.out.println("Server is ready\n");
@@ -47,11 +48,12 @@ public class UDPServer {
 
 					String message = new String(pac.getData(), 0 , pac.getLength());
 					System.out.println("Received: " + message.trim());
+					rec_msg++;
 
 					processMessage(message);
 				} catch(SocketTimeoutException e){
-					System.out.println("Messages received: " + totalMessages);
-					totalMessages = -1;
+					System.out.println("Messages received: " + rec_msg);
+					rec_msg = 0;
 				}
 			}
 		} catch(SocketException e){
